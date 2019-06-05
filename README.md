@@ -14,13 +14,15 @@ $ npm install react-tencent-captcha --save
 import TencentCaptcha from 'react-tencent-captcha';
 
 export default () => {
-  const onSuccess = isSuccess => console.log(isSuccess);
+  const onCallBack = (...args) => console.log(...args);
+  const onReady = instance => console.log(instance);
 
   return (
     <TencentCaptcha
-      gt="your-gt"
-      challenge="your-challenge"
-      onSuccess={onSuccess}
+      appId="your-appId"
+      options={{}}
+      onCallBack={onCallBack}
+      onReady={onReady}
     />
   );
 };
@@ -30,22 +32,10 @@ export default () => {
 
 ``` javascript
   className:    PropTypes.string,
-  gt:           PropTypes.string.isRequired,
-  challenge:    PropTypes.string.isRequired,
-  offline:      PropTypes.bool,
-  newCaptcha:   PropTypes.bool,
-  product:      PropTypes.string,
-  width:        PropTypes.string,
-  lang:         PropTypes.string,
-  https:        PropTypes.bool,
-  timeout:      PropTypes.number,
-  area:         PropTypes.string,
-  nextWidth:    PropTypes.string,
-  bgColor:      PropTypes.string,
+  appId:        PropTypes.string.isRequired,
+  options:      PropTypes.object,
+  onCallBack:   PropTypes.func,
   onReady:      PropTypes.func,
-  onSuccess:    PropTypes.func,
-  onError:      PropTypes.func,
-  onClose:      PropTypes.func,
 ```
 
 [Read More](https://007.qq.com/web-access.html?ADTAG=acces.cfg)
