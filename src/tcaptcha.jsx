@@ -146,7 +146,7 @@ export default class TCaptcha extends React.PureComponent {
       return;
     }
 
-    const captcha = new window.TencentCaptcha(that.dom, appId, onCallBack, options);
+    const captcha = new window.TencentCaptcha(that.dom.current, appId, onCallBack, options);
     that.instance = captcha;
 
     if (that.element) {
