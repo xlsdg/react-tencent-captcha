@@ -1,0 +1,60 @@
+{
+  "author": "xLsDg <xlsdg@qq.com> (https://xlsdg.org/)",
+  "browser": "dist/tcaptcha.umd.min.js",
+  "bugs": {
+    "url": "https://github.com/xlsdg/react-tencent-captcha/issues"
+  },
+  "description": "A TCaptcha component for React",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "babel-eslint": "^10.0.1",
+    "bili": "^4.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-alloy": "^2.0.2",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "homepage": "https://github.com/xlsdg/react-tencent-captcha",
+  "jsdelivr": "dist/tcaptcha.min.js",
+  "keywords": [
+    "react",
+    "tcaptcha",
+    "react-tencent-captcha",
+    "library"
+  ],
+  "license": "MIT",
+  "main": "dist/tcaptcha.min.js",
+  "module": "dist/tcaptcha.esm.min.js",
+  "name": "react-tencent-captcha",
+  "peerDependencies": {
+    "react": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xlsdg/react-tencent-captcha.git"
+  },
+  "scripts": {
+    "build": "bili",
+    "release:major": "npm version major && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:patch": "npm version patch && npm publish"
+  },
+  "source": "src/tcaptcha.jsx",
+  "unpkg": "dist/tcaptcha.min.js",
+  "version": "1.0.0"
+}
