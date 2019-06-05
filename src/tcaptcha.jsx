@@ -25,7 +25,6 @@ export default class TCaptcha extends React.PureComponent {
     that.dom = React.createRef();
     that.instance = null;
     that.script = null;
-    that.element = null;
 
     // that.state = {};
   }
@@ -92,12 +91,12 @@ export default class TCaptcha extends React.PureComponent {
 
     const script = document.getElementById(SCRIPT_ID);
     if (script) {
-      if (that.element) {
+      if (that.script) {
         return;
       }
 
       script.addEventListener('Im-ready', that.ready.bind(that), false);
-      that.element = script;
+      that.script = script;
       return;
     }
 
@@ -149,8 +148,8 @@ export default class TCaptcha extends React.PureComponent {
     const captcha = new window.TencentCaptcha(that.dom.current, appId, onCallBack, options);
     that.instance = captcha;
 
-    if (that.element) {
-      that.element.removeEventListener('Im-ready', that.ready.bind(that), false);
+    if (that.script) {
+      that.script.removeEventListener('Im-ready', that.ready.bind(that), false);
     }
 
     if (isFunction(onReady)) {
@@ -163,15 +162,14 @@ export default class TCaptcha extends React.PureComponent {
     // console.log('destroy');
     // const {  } = that.state;
 
-    if (that.element) {
-      that.element.removeEventListener('Im-ready', that.ready.bind(that), false);
+    if (that.script) {
+      that.script.removeEventListener('Im-ready', that.ready.bind(that), false);
     }
 
     // that.script.parentNode.removeChild(that.script);
 
     that.instance = null;
     that.script = null;
-    that.element = null;
   };
 
   triggerEvent = name => {
@@ -179,13 +177,13 @@ export default class TCaptcha extends React.PureComponent {
     // console.log('triggerEvent');
     // const {  } = that.state;
 
-    if (!that.element) {
+    if (!that.script) {
       return;
     }
 
     const e = document.createEvent('Event');
     e.initEvent(name, true, true);
-    that.element.dispatchEvent(e);
+    that.script.dispatchEvent(e);
   };
 
   render() {
