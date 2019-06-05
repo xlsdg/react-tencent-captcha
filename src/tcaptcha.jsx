@@ -123,8 +123,9 @@ export default class TCaptcha extends React.PureComponent {
       };
     }
 
-    const protocol = window.location.protocol === 'http:' ? 'http:' : 'https:';
-    ds.src = `${protocol}//ssl.captcha.qq.com/TCaptcha.js?_t=${new Date().getTime()}`;
+    // const protocol = window.location.protocol === 'http:' ? 'http:' : 'https:';
+    // ds.src = `${protocol}//ssl.captcha.qq.com/TCaptcha.js?_t=${new Date().getTime()}`;
+    ds.src = `https://ssl.captcha.qq.com/TCaptcha.js?_t=${new Date().getTime()}`;
     const s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(ds, s);
     that.script = ds;
