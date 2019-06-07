@@ -4,7 +4,7 @@
 
 ## Installation
 
-```
+```bash
 $ npm install react-tencent-captcha --save
 ```
 
@@ -40,6 +40,6 @@ export default () => {
 
 [Read More](https://007.qq.com/web-access.html?ADTAG=acces.cfg)
 
-# License
+## License
 
 MIT

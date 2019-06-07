@@ -29,21 +29,11 @@ export default class TCaptcha extends React.PureComponent {
     // that.state = {};
   }
 
-  // componentWillMount() {
-  //   const that = this;
-  //   console.log('componentWillMount', that.props, that.state);
-  // }
-
   componentDidMount() {
     const that = this;
     // console.log('componentDidMount', that.props, that.state);
     that.init();
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   const that = this;
-  //   console.log('componentWillReceiveProps', that.props, nextProps);
-  // }
 
   // shouldComponentUpdate(nextProps, nextState) {
   //   const that = this;
@@ -60,11 +50,6 @@ export default class TCaptcha extends React.PureComponent {
   //     options !== nextProps.options;
 
   //   return isUpdate;
-  // }
-
-  // componentWillUpdate(nextProps, nextState) {
-  //   const that = this;
-  //   console.log('componentWillUpdate', that.props, nextProps, that.state, nextState);
   // }
 
   componentDidUpdate(prevProps, prevState) {
@@ -95,7 +80,7 @@ export default class TCaptcha extends React.PureComponent {
         return;
       }
 
-      script.addEventListener('Im-ready', that.ready.bind(that), false);
+      script.addEventListener('Im-ready', that.ready, false);
       that.script = script;
       return;
     }
@@ -148,8 +133,8 @@ export default class TCaptcha extends React.PureComponent {
     const captcha = new window.TencentCaptcha(that.dom.current, appId, onCallBack, options);
     that.instance = captcha;
 
-    if (that.script) {
-      that.script.removeEventListener('Im-ready', that.ready.bind(that), false);
+    if (that.script && isFunction(that.script.removeEventListener)) {
+      that.script.removeEventListener('Im-ready', that.ready, false);
     }
 
     if (isFunction(onReady)) {
@@ -162,11 +147,14 @@ export default class TCaptcha extends React.PureComponent {
     // console.log('destroy');
     // const {  } = that.state;
 
-    if (that.script) {
-      that.script.removeEventListener('Im-ready', that.ready.bind(that), false);
+    if (that.script && isFunction(that.script.removeEventListener)) {
+      that.script.removeEventListener('Im-ready', that.ready, false);
+      // that.script.parentNode.removeChild(that.script);
     }
 
-    // that.script.parentNode.removeChild(that.script);
+    if (that.instance && isFunction(that.instance.destroy)) {
+      that.instance.destroy();
+    }
 
     that.instance = null;
     that.script = null;
@@ -177,7 +165,7 @@ export default class TCaptcha extends React.PureComponent {
     // console.log('triggerEvent');
     // const {  } = that.state;
 
-    if (!that.script) {
+    if (!that.script || !isFunction(that.script.dispatchEvent)) {
       return;
     }
 
@@ -189,8 +177,12 @@ export default class TCaptcha extends React.PureComponent {
   render() {
     const that = this;
     // console.log('render');
-    const { className } = that.props;
+    const { className, children } = that.props;
 
-    return <div ref={that.dom} className={className} />;
+    return (
+      <div ref={that.dom} className={className}>
+        {children}
+      </div>
+    );
   }
 }
