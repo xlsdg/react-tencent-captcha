@@ -32,6 +32,8 @@ export default class TCaptcha extends React.PureComponent {
   componentDidMount() {
     const that = this;
     // console.log('componentDidMount', that.props, that.state);
+    // const {  } = that.props;
+    // const {  } = that.state;
     that.create();
   }
 
@@ -55,18 +57,23 @@ export default class TCaptcha extends React.PureComponent {
   componentDidUpdate(prevProps, prevState) {
     const that = this;
     // console.log('componentDidUpdate', prevProps, that.props, prevState, that.state);
+    // const {  } = that.props;
+    // const {  } = that.state;
     that.create();
   }
 
   componentWillUnmount() {
     const that = this;
     // console.log('componentWillUnmount', that.props, that.state);
+    // const {  } = that.props;
+    // const {  } = that.state;
     that.destroy();
   }
 
   create = () => {
     const that = this;
     // console.log('create');
+    // const {  } = that.props;
     // const {  } = that.state;
 
     if (window.TencentCaptcha) {
