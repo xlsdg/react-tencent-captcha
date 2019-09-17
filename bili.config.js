@@ -23,7 +23,7 @@ module.exports = {
     // fileName: '[name][suffix].js',
     format: ['cjs-min', 'es-min', 'umd-min'],
     minify: true,
-    moduleName: 'TCaptcha',
+    moduleName: 'TencentCaptcha',
     sourceMap: true,
     sourceMapExcludeSources: true,
     target: 'browser',

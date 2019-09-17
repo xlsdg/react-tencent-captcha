@@ -14,13 +14,14 @@ function NewCustomEvent(type, params = { bubbles: false, cancelable: false, deta
   return event;
 }
 
-export default class TCaptcha extends React.PureComponent {
+export default class TencentCaptcha extends React.PureComponent {
   static defaultProps = {
     className: 'i-tcaptcha',
     // appId: '',
     options: {},
+    noElement: false,
     onCallBack: () => {},
-    onReady: () => {},
+    // onReady: () => {},
   };
 
   constructor() {
@@ -131,7 +132,7 @@ export default class TCaptcha extends React.PureComponent {
   ready = event => {
     const that = this;
     // console.log('ready');
-    const { appId, options, onCallBack, onReady } = that.props;
+    const { appId, options, noElement, onCallBack, onReady } = that.props;
     // const {  } = that.state;
 
     if (!window.TencentCaptcha) {
@@ -143,11 +144,22 @@ export default class TCaptcha extends React.PureComponent {
       return;
     }
 
-    if (!that.dom || !that.dom.current) {
+    let captcha = null;
+
+    if (noElement) {
+      captcha = new window.TencentCaptcha(appId, onCallBack, options);
+    } else {
+      if (!that.dom || !that.dom.current) {
+        return;
+      }
+
+      captcha = new window.TencentCaptcha(that.dom.current, appId, onCallBack, options);
+    }
+
+    if (!captcha) {
       return;
     }
 
-    const captcha = new window.TencentCaptcha(that.dom.current, appId, onCallBack, options);
     that.instance = captcha;
 
     if (isFunction(onReady)) {

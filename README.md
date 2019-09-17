@@ -1,6 +1,6 @@
 # react-tencent-captcha
 
-> A TCaptcha component for React
+> A TencentCaptcha component for React
 
 ## Installation
 
@@ -38,7 +38,7 @@ export default () => {
   onReady:      PropTypes.func,
 ```
 
-[Read More](https://007.qq.com/web-access.html?ADTAG=acces.cfg)
+[Read More](https://007.qq.com/web-access.html)
 
 ## License
 
